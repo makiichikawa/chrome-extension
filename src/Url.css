@@ -1,0 +1,28 @@
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.main {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.side {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.rice {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.another {
+  background-color: #f8d7da;
+  color: #721c24;
+}
