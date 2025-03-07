@@ -81,6 +81,17 @@ function App() {
     setUrls(newUrls)
   }
 
+  const changeTag = (id, tag) => {
+    const newUrls = urls.map((url) => {
+      if (url.id === id) {
+        url.tags = [{ name: tag.label, className: tag.value }]
+      }
+      return url;
+    });
+    storage.local.set({ urls: newUrls });
+    setUrls(newUrls);
+  }
+
   const handDeleteUrl = (id) => {
     const newUrls = urls.filter((url) => {
       return url.id !== id;
@@ -106,16 +117,16 @@ function App() {
           <Tab>その他</Tab>
         </TabList>
         <TabPanel>
-          <UrlList urls={filterUrls("主菜")} handDeleteUrl={handDeleteUrl}/>
+          <UrlList urls={filterUrls("主菜")} handDeleteUrl={handDeleteUrl} changeTag={changeTag}/>
         </TabPanel>
         <TabPanel>
-          <UrlList urls={filterUrls("副菜")} handDeleteUrl={handDeleteUrl}/>
+          <UrlList urls={filterUrls("副菜")} handDeleteUrl={handDeleteUrl} changeTag={changeTag}/>
         </TabPanel>
         <TabPanel>
-          <UrlList urls={filterUrls("ごはんもの")} handDeleteUrl={handDeleteUrl}/>
+          <UrlList urls={filterUrls("ごはんもの")} handDeleteUrl={handDeleteUrl} changeTag={changeTag}/>
         </TabPanel>
         <TabPanel>
-          <UrlList urls={filterUrls("その他")} handDeleteUrl={handDeleteUrl}/>
+          <UrlList urls={filterUrls("その他")} handDeleteUrl={handDeleteUrl} changeTag={changeTag}/>
         </TabPanel>
       </Tabs>
     </div>

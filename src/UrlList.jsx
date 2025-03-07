@@ -2,11 +2,11 @@ import React from 'react'
 import Url from './Url'
 import './UrlList.css'
 
-const UrlList = ({urls, handDeleteUrl}) => {
+const UrlList = ({urls, handDeleteUrl, changeTag}) => {
   return (
     <div className="url-list">
       {urls.map((url) => (
-        <Url url={url} key={url.id} handDeleteUrl={handDeleteUrl} className="url-item" />
+        <Url url={url} key={url.id} handDeleteUrl={handDeleteUrl} changeTag={changeTag} className="url-item" />
       ))}
     </div>
   )

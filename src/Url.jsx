@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import './Url.css'
 
-const Url = ({url, handDeleteUrl}) => {
+const Url = ({url, handDeleteUrl, changeTag}) => {
   const tag = url.tags[0]
   const options = [
     { value: 'rice', label: 'ごはんもの' },
@@ -23,6 +23,7 @@ const Url = ({url, handDeleteUrl}) => {
         defaultValue={{ value: tag.className, label: tag.name }}
         options={options}
         formatOptionLabel={formatOptionLabel}
+        onChange={(selectOption) => changeTag(url.id, selectOption)}
       />
       {/* <div className={`tag ${tag.className}`}>{tag.name}</div> */}
       <a href={url.url} style={{ color: '#007BFF', textDecoration: 'underline' }}>{url.title}</a>
