@@ -11,6 +11,7 @@
     "@extend-chrome/storage": "^1.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-select": "^5.10.1",
     "react-tabs": "^6.1.0",
     "uuid": "^11.1.0"
   },
