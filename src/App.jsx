@@ -86,11 +86,25 @@ function App() {
 
   const handAddUrl = async () => {
     const currentTab = await getCurrentTab();
-    const url = await currentTab.url
-    const title = await currentTab.title
-    const newUrls = [...urls, { id: uuidv4(), url: url, title: title, tags: getTags(title) }]
+    const url = await currentTab.url;
+    const title = await currentTab.title;
+    const newUrl = { 
+      id: uuidv4(), 
+      url: url, 
+      title: title, 
+      tags: getTags(title) 
+    };
+    
+    const newUrls = [...urls, newUrl];
     await storage.local.set({ urls: newUrls });
-    setUrls(newUrls)
+    setUrls(newUrls);
+
+    if (newUrl.tags.length > 0) {
+      const event = new CustomEvent('activateTab', { 
+        detail: newUrl.tags[0].className 
+      });
+      window.dispatchEvent(event);
+    }
   }
 
   const changeTag = (id, tag) => {
