@@ -26,7 +26,14 @@ const Url = ({url, handDeleteUrl, changeTag}) => {
         onChange={(selectOption) => changeTag(url.id, selectOption)}
       />
       {/* <div className={`tag ${tag.className}`}>{tag.name}</div> */}
-      <a href={url.url} style={{ color: '#007BFF', textDecoration: 'underline' }}>{url.title}</a>
+      <a 
+        href={url.url} 
+        onClick={(e) => e.stopPropagation()}
+        target="_blank"
+        style={{ color: '#007BFF', textDecoration: 'underline' }}
+      >
+        {url.title}
+      </a>
       <button onClick={() => handDeleteUrl(url.id)} style={{ marginLeft: '10px', backgroundColor: '#ccc', color: '#fff' }}>削除</button>
     </div>
   )
