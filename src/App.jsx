@@ -8,6 +8,8 @@ import 'react-tabs/style/react-tabs.css';
 
 function App() {
   const [urls, setUrls] = useState([])
+  const [activeTab, setActiveTab] = useState(0)
+  const tabValues = ['main', 'side', 'rice', 'another']
 
   useEffect(() => {
     (async () => {
@@ -16,6 +18,16 @@ function App() {
         setUrls(value.urls);
       }
     })();
+
+    const handleActivateTab = (event) => {
+      const tabIndex = tabValues.indexOf(event.detail)
+      if (tabIndex !== -1) {
+        setActiveTab(tabIndex)
+      }
+    }
+
+    window.addEventListener('activateTab', handleActivateTab)
+    return () => window.removeEventListener('activateTab', handleActivateTab)
   }, []);
 
   const getCurrentTab = async () => {
@@ -109,7 +121,7 @@ function App() {
   return (
     <div>
       <button onClick={handAddUrl}>URLを追加</button>
-      <Tabs>
+      <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
         <TabList>
           <Tab>主菜</Tab>
           <Tab>副菜</Tab>

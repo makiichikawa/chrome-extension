@@ -23,7 +23,11 @@ const Url = ({url, handDeleteUrl, changeTag}) => {
         defaultValue={{ value: tag.className, label: tag.name }}
         options={options}
         formatOptionLabel={formatOptionLabel}
-        onChange={(selectOption) => changeTag(url.id, selectOption)}
+        onChange={(selectOption) => {
+          changeTag(url.id, selectOption)
+          const event = new CustomEvent('activateTab', { detail: selectOption.value })
+          window.dispatchEvent(event)
+        }}
       />
       {/* <div className={`tag ${tag.className}`}>{tag.name}</div> */}
       <a 
